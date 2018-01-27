@@ -35,36 +35,44 @@ function getEmotionData(faceData) {
             }
         }
     */
-
+    console.log('in getEmotionData');
+    console.log(faceData);
     var faceEmotions = {
         timestamp: faceData.timestamp,
         description: faceData.description,
         details: null
-    }
+    };
     var apiRes = faceData.data;
-    if (apiRes == null || apiRes == undefined || data.length == 0) {
+    console.log(apiRes);
+    if (apiRes == null || apiRes == undefined || apiRes.length == 0) {
         faceEmotions.details = null;
+        console.log('apiRes is null')
         return faceEmotions;
+        
     } else {
         // this assumes single user
         // processes first face in case of more than one usr
         let faceAtt = apiRes[0].faceAttributes;
-
+        console.log(faceAtt);
         // Error handling
         if (faceAtt == null || faceAtt == undefined) {
             // no data
             faceEmotions.details = null;
+            console.log('faceAtt is null')
             return faceEmotions;
+
         } else {
             let details = {};
             details.gender = (faceAtt.gender == null || faceAtt.gender == undefined) ? null : faceAtt.gender;
             details.age = (faceAtt.age == null || faceAtt.age == undefined) ? null : faceAtt.age;
 
             let emotion = faceAtt.emotion;
+            console.log(emotion);
             details.emotion = null;
+            console.log('going ok ');
             if (emotion != null && emotion != undefined) {
                 let sum = 0;
-                sum += emotion.disgust + emotion.fear + emotion.happiness + emotion.neutral + emotion.sadness + emotion.surprise;
+                sum += (emotion.disgust + emotion.fear + emotion.happiness + emotion.neutral + emotion.sadness + emotion.surprise);
                 details.emotion = {
                     neutral: emotion.neutral * 100 / sum,
                     disgust: emotion.disgust * 100 / sum,
@@ -73,9 +81,11 @@ function getEmotionData(faceData) {
                     sadness: emotion.sadness * 100 / sum,
                     surprise: emotion.surprise * 100 / sum
                 }
+                console.log(details.emotion);
             }
 
             faceEmotions.details = details;
+            
             return faceEmotions;
         }
     }
@@ -174,7 +184,7 @@ function processFaces(dataURL, timestamp, description, callback) {
     var params = {
         "returnFaceId": "true",
         "returnFaceLandmarks": "true",
-        "returnFaceAttributes": "headPose"
+        "returnFaceAttributes": "headPose,gender,age,emotion"
     };
 
     // Display the image.

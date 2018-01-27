@@ -49,23 +49,32 @@ function getMeta() {
         console.log(obj);
 
         if (mode == 'emotion') {
+            console.log('emotion mode')
             let Emotions = getEmotionData(obj);
+            console.log('its ok ->')
+            console.log(Emotions)
             timestamps.push(Emotions.timestamp);
             description.push(Emotions.description);
-            Emotions = Emotions.details.emotion;
-            neutral.push(Emotions.neutral);
-            comedy.push(Emotions.happiness);
-            horror.push(Emotions.sadness);
-            disgust.push(Emotions.disgust);
-            emotional.push(Emotions.sadness);
-            surprise.push(Emotions.surprise);
+            console.log('first')
+            Emotions1 = Emotions.details.emotion;
+            console.log('good')
+            neutral.push(Emotions1.neutral);
+            comedy.push(Emotions1.happiness);
+            horror.push(Emotions1.sadness);
+            disgust.push(Emotions1.disgust);
+            console.log('fine')
+            emotional.push(Emotions1.sadness);
+            surprise.push(Emotions1.surprise);
 
             let max = 'neutral';
-            for(var key in Emotions) {
-                if (Emotions[key] > Emotions[max]) max = key;
+            console.log('well')
+            for(var key in Emotions1) {
+                if (Emotions1[key] > Emotions1[max]) max = key;
             }
 
+            console.log('hi')
             timestampEmotions.push(max);
+            console.log(timestampEmotions);
         }
         else if (mode == 'lecture') getAttentionData(obj);
         else {
