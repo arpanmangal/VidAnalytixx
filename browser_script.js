@@ -90,6 +90,22 @@
         setInterval(takePic, 1500);
         dataNote=true;
       }
+    } else if (message.command === "seeGraph") {
+      // pass the data to openNewWindow
+      console.log('seeGraph clicked');
+      // let data = {
+      //   timestamps = timestamps,
+      //   description = description,
+      //   timestampEmotions = timestampEmotions,
+      //   neutral = neutral,
+      //   comedy = comedy,
+      //   horror = horror,
+      //   emotional = emotional,
+      //   disgust = disgust,
+      //   surprise = surprise
+      // }
+      console.log(3);
+      openNewWindow({'a':3});
     }
     // else if (message.command === "seeGraph") {
     //   // removeExistingBeasts();
