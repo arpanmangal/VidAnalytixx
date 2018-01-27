@@ -1,5 +1,4 @@
-(function() {
-
+(function () {
   if (window.hasRun) {
     return;
   }
@@ -11,17 +10,17 @@
   var height = 320;
 
   function setup() {
-    video = document.querySelector("#videoElement"); 
+    video = document.querySelector("#videoElement");
     canvas = document.querySelector("#canvas");
-    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia; 
-    if (navigator.getUserMedia) {          
+    navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+    if (navigator.getUserMedia) {
       navigator.getUserMedia({
         video: true
       }, handleVideo, videoError);
-    } 
-    function handleVideo(stream) {    
+    }
+    function handleVideo(stream) {
       video.src = window.URL.createObjectURL(stream);
-    } 
+    }
     function videoError(e) {     // do something
     }
   }
@@ -42,7 +41,7 @@
       // para.innerHTML= (clickMarker.getTime() - startTime) / 1000 ;
       // para.append(" seconds");
 
-      // passFace(data);
+      passFace(data);
     } else {
       // clearPhoto();
     }
@@ -66,5 +65,7 @@
     }
   });
   // alert("hio");
+
+
 
 })();

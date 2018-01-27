@@ -14,9 +14,9 @@ function listenForClicks() {
     }
 
     browser.tabs.query({
-        active: true,
-        currentWindow: true
-      })
+      active: true,
+      currentWindow: true
+    })
       .then(sendToPage)
       .catch(reportError);
   }
@@ -49,9 +49,28 @@ function reportExecuteScriptError(error) {
 
 }
 
-
 browser.tabs.executeScript({
-    file: "browser_script.js"
-  })
+  file: "static/lib/jquery.min.js"
+})
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
+
+browser.tabs.executeScript({
+  file: "static/js/processFace.js"
+})
+  .then(listenForClicks)
+  .catch(reportExecuteScriptError);
+
+browser.tabs.executeScript({
+  file: "static/js/main.js"
+})
+  .then(listenForClicks)
+  .catch(reportExecuteScriptError);
+
+browser.tabs.executeScript({
+  file: "browser_script.js"
+})
+  .then(listenForClicks)
+  .catch(reportExecuteScriptError);
+
+

@@ -1,3 +1,4 @@
+
 function getEmotionData(faceData) {
     /* faceData = {
         timestamp,
@@ -110,23 +111,21 @@ function getAttentionData(faceData) {
                 return faceAttention;
             } else {
                 let details = {
-                            x: Math.abs(faceLand.pupilLeft.x + faceLand.pupilRight.x) / 2,
-                            y: Math.abs(faceLand.pupilLeft.y + faceLand.pupilRight.y) / 2
-                        };
+                    x: Math.abs(faceLand.pupilLeft.x + faceLand.pupilRight.x) / 2,
+                    y: Math.abs(faceLand.pupilLeft.y + faceLand.pupilRight.y) / 2
+                };
                 let eyeCoordinate = {};
                 eyeCoordinate.x = Math.abs(details.x.map(50, 250, 5, 15));
                 eyeCoordinate.y += Math.abs(details.y.map(50, 250, 5, 15));
-                
+
                 faceAttention.eyeCoordinate = eyeCoordinate;
                 return faceAttention
             }
         }
     }
 }
-    
 
-
-function processImage(dataURL, timestamp, description, callback) {
+function processFaces(dataURL, timestamp, description, callback) {
     // **********************************************
     // *** Update or verify the following values. ***
     // **********************************************
@@ -151,6 +150,7 @@ function processImage(dataURL, timestamp, description, callback) {
 
 
     // Perform the REST API call.
+    console.log('before ')
     $.ajax({
         url: uriBase + "?" + $.param(params),
 
@@ -160,7 +160,7 @@ function processImage(dataURL, timestamp, description, callback) {
 
 
         // Request headers.
-        beforeSend: function(xhrObj){
+        beforeSend: function (xhrObj) {
             // xhrObj.setRequestHeader("Content-Type","application/octet-stream");
             xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
         },
@@ -171,22 +171,24 @@ function processImage(dataURL, timestamp, description, callback) {
 
     })
 
-        .done(function(data) {
-            
+        .done(function (data) {
+
             var obj = {
                 timestamp: timestamp,
                 description: description,
                 data: data
             }
+            console.log(obj)
             callback(obj);
         })
 
-        .fail(function(jqXHR, textStatus, errorThrown) {
+        .fail(function (jqXHR, textStatus, errorThrown) {
             var obj = {
                 timestamp: timestamp,
                 description: description,
                 data: null // change this to actual error message if you want err to be sent
             }
+            console.log(errorThrown)
             callback(obj);
         });
 }
