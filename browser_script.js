@@ -52,6 +52,7 @@
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "startMovie") {
       // document.innerHTML = '';
+      mode = 'emotion';
       $("body").prepend('<canvas id="canvas"></canvas>' +
         '<video autoplay="true" id="videoElement">  </video>');
       // document.body.appendChild('<canvas id="canvas"></canvas>' +
@@ -66,6 +67,22 @@
       dataNote=true;
     }
       // alert("second stage reached");
+    } else if (message.command === "startLecture") {
+        // document.innerHTML = '';
+        mode = 'lecture'
+        $("body").prepend('<canvas id="canvas"></canvas>' +
+          '<video autoplay="true" id="videoElement">  </video>');
+        // document.body.appendChild('<canvas id="canvas"></canvas>' +
+        //   '<video autoplay="true" id="videoElement">  </video>');
+        // document.body.innerHTML;
+        // setup();
+        // video.play();
+        if(dataNote==false){
+
+        setTimeout(setup, 1000);
+        setInterval(takePic, 1500);
+        dataNote=true;
+      }
     }
     // else if (message.command === "seeGraph") {
     //   // removeExistingBeasts();

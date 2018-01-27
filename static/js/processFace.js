@@ -1,4 +1,4 @@
-
+var mode = null; // emotion or lecture
 function getEmotionData(faceData) {
     /* faceData = {
         timestamp,
@@ -172,7 +172,7 @@ function processFaces(dataURL, timestamp, description, callback) {
 
 
     // Perform the REST API call.
-    console.log('before ' + dataURL + makeblob(dataURL))
+    // console.log('before ' + dataURL + makeblob(dataURL))
     $.ajax({
         url: uriBase + "?" + $.param(params),
 
@@ -201,7 +201,7 @@ function processFaces(dataURL, timestamp, description, callback) {
                 description: description,
                 data: data
             }
-            console.log(obj)
+            // console.log(obj)
             callback(obj);
         })
 
