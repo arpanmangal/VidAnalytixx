@@ -61,7 +61,14 @@
       setTimeout(setup, 1000);
       setInterval(takePic, 1500);
       // alert("second stage reached");
-    } else if (message.command === "reset") {
+    }
+    // else if (message.command === "seeGraph") {
+    //   // removeExistingBeasts();
+    //   console.log("seeGraph clicked");
+    //   ytPlayer = document.getElementsByClassName('video-stream')[0];
+    //   console.log(ytPlayer.currentTime);
+    // } 
+    else if (message.command === "reset") {
       // removeExistingBeasts();
     }
   });

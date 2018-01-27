@@ -1,9 +1,10 @@
 function getMeta() {
     //returns a promise to return topic and pageNum
     //if(mode=='video') {
-    console.log('in getMeta')
+    console.log('in getMeta');
+    var ytPlayer = document.getElementsByClassName('video-stream')[0];
     return new Promise((resolve, reject) => {
-      resolve({});
+      resolve({timestamp: ytPlayer.currentTime});
     });
     //}
     // return pdfDoc.getPage(pageNum).then(function(page) {
@@ -33,8 +34,9 @@ function getMeta() {
         // console.log("OK");
       }
       // if (mode == 'pdf') description = "Slide " + metaData.page + " (" + metaData.topic + ") ";
-      // else description = getCleanTimeStamp();
-      // console.log(description);
+      description = metaData.timestamp;
+      console.log(description);
+      
       console.log('calling processFace')
       processFaces(file, 4/*getTimeStamp()*/, 'des'/*description*/, function (obj) {
         console.log(obj);
