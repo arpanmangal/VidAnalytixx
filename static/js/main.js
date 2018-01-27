@@ -2,17 +2,21 @@ function getMeta() {
     //returns a promise to return topic and pageNum
     //if(mode=='video') {
     console.log('in getMeta');
-    try{
+    if(document.domain.indexOf('youtube')===-1){
+      return new Promise((resolve, reject) => {
+        resolve({timestamp: 1});
+      });
+    }
     var ytPlayer = document.getElementsByClassName('video-stream')[0];
+      console.log('not youtube');
+      
+    
     return new Promise((resolve, reject) => {
       resolve({timestamp: ytPlayer.currentTime});
     });
     }
-    catch(err){
-      return new Promise((resolve, reject) => {
-      resolve({timestamp: 1});
-    });
-    }
+    
+    
     //}
     // return pdfDoc.getPage(pageNum).then(function(page) {
     //     return page.getTextContent().then(function(textContent) {
@@ -20,7 +24,7 @@ function getMeta() {
     //         return {topic: textContent.items[0].str, page: String(pageNum)};
     //     });
     // });
-  }
+  
 
   function passFace(file) {
     // alert('in passFace')';
