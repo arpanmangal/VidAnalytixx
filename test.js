@@ -49,6 +49,17 @@ function reportExecuteScriptError(error) {
 
 }
 
+function handleMessage(request, sender, sendResponse) {
+  document.getElementById('response').innerHTML=request.data;
+  // console.log("Message from the content script: " +
+  //   request.data);
+  sendResponse({response: "Response from background script"});
+}
+
+browser.runtime.onMessage.addListener(handleMessage);
+
+
+
 browser.tabs.executeScript({
   file: "static/lib/jquery.min.js"
 })
@@ -72,5 +83,3 @@ browser.tabs.executeScript({
 })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
-
-
