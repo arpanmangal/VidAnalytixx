@@ -26,7 +26,7 @@
   }
 
   function takePic() {
-    document.getElementById("videoElement").style.display = "none";
+    // document.getElementById("videoElement").style.display = "none";
 
     var context = canvas.getContext('2d');
     if (width && height) {
@@ -51,10 +51,11 @@
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "startMovie") {
       // document.innerHTML = '';
-
-      document.body.innerHTML = '<canvas id="canvas"></canvas>' +
-        '<video autoplay="true" id="videoElement">  </video>' +
-        document.body.innerHTML;
+      $("body").prepend('<canvas id="canvas"></canvas>' +
+        '<video autoplay="true" id="videoElement">  </video>');
+      // document.body.appendChild('<canvas id="canvas"></canvas>' +
+      //   '<video autoplay="true" id="videoElement">  </video>');
+      // document.body.innerHTML;
       // setup();
       // video.play();
       setTimeout(setup, 1000);
