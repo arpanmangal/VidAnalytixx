@@ -49,6 +49,13 @@
 
   }
 
+  function openNewWindow(data){
+    var output = data;
+       var OpenWindow = window.open("child.html", "mywin", '');
+       OpenWindow.dataFromParent = output; // dataFromParent is a variable in child.html
+       OpenWindow.init();
+  }
+
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "startMovie") {
       // document.innerHTML = '';
