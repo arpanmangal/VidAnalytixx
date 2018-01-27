@@ -8,6 +8,7 @@
   var canvas = null;
   var width = 320;
   var height = 320;
+  var dataNote=false;
 
   function setup() {
     video = document.querySelector("#videoElement");
@@ -58,8 +59,12 @@
       // document.body.innerHTML;
       // setup();
       // video.play();
+      if(dataNote==false){
+
       setTimeout(setup, 1000);
       setInterval(takePic, 1500);
+      dataNote=true;
+    }
       // alert("second stage reached");
     }
     // else if (message.command === "seeGraph") {
@@ -67,7 +72,7 @@
     //   console.log("seeGraph clicked");
     //   ytPlayer = document.getElementsByClassName('video-stream')[0];
     //   console.log(ytPlayer.currentTime);
-    // } 
+    // }
     else if (message.command === "reset") {
       // removeExistingBeasts();
     }
