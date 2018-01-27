@@ -2,10 +2,17 @@ function getMeta() {
     //returns a promise to return topic and pageNum
     //if(mode=='video') {
     console.log('in getMeta');
+    try{
     var ytPlayer = document.getElementsByClassName('video-stream')[0];
     return new Promise((resolve, reject) => {
       resolve({timestamp: ytPlayer.currentTime});
     });
+    }
+    catch(err){
+      return new Promise((resolve, reject) => {
+      resolve({timestamp: 1});
+    });
+    }
     //}
     // return pdfDoc.getPage(pageNum).then(function(page) {
     //     return page.getTextContent().then(function(textContent) {
