@@ -1,29 +1,29 @@
 {
+  "manifest_version": 2,
   "name": "VidAnalytixx",
-  "description": "An extension to get detailed analytics of user attentivenss and emotions during viewing a video.",
   "version": "1.0",
 
-  "manifest_version": 2,
+  "description": "An extension to get detailed analytics of user attentivenss and emotions during viewing a video.",
+  "homepage_url": "https://github.com/ArpanMangal/VidAnalytixx",
 
-  "browser_action": {
-    "default_popup": "popup.html",
-    "default_icon": "logo.png",
-    "default_title": "Click here!"
+  "icons": {
+    "48": "logo.png"
   },
 
-  "commands": {
-    "_execute_browser_action": {
-      "suggested_key": {
-        "default": "Ctrl+Shift+F",
-        "mac": "MacCtrl+Shift+F"
-      },
-      "description": "Shortcut to open extension window."
-    }
-  },
+
 
   "permissions": [
-    "activeTab",
-    "storage"
-  ]
+    "activeTab"
+  ],
+
+  "browser_action": {
+    "default_icon": "logo.png",
+    "default_title": "VidAnalytixx",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+      "scripts": ["webcam.js"],
+    },
 
 }

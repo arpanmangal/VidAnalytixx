@@ -23,21 +23,54 @@
       display: flex;
       justify-content: space-between;
     }
+
+
+    .button {
+      background-color: #4CAF50;
+      /* Green */
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .button3 {
+      background-color: #f44336;
+    }
+
+    /* Red */
+
+    .button4 {
+      background-color: #e7e7e7;
+      color: black;
+    }
+
+    /* Gray */
   </style>
-  <script src="popup.js"></script>
+  <!-- <script src="webcam.js"></script> -->
 </head>
 
 <body>
   <h1>VidAnalytixx Settings</h1>
   <div id="container">
-    <span>Span me</span>
+    <button type="button" class="button" id="startButton">Start Observation</button>
+    <button type="button" class="button button4" id="stopButton">Stop Observation</button>
+    <!-- <span>Span me</span>
     <select id="dropdown">
           <option selected disabled hidden value=''></option>
           <option value="white">Option 1</option>
           <option value="pink">Option 2</option>
           <option value="green">Option 3</option>
           <option value="yellow">Option 4</option>
-        </select>
+        </select> -->
+
+
+    <div class="camera">
+      <video id="myVid" class="videoFeed">Video stream not available.</video>
+    </div>
   </div>
 </body>
 
