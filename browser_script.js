@@ -27,7 +27,7 @@
   }
 
   function takePic() {
-    // canvas.style.display === "none";
+    document.getElementById("videoElement").style.display = "none";
 
     var context = canvas.getContext('2d');
     if (width && height) {
@@ -59,7 +59,7 @@
       // setup();
       // video.play();
       setTimeout(setup, 1000);
-      setTimeout(takePic, 3000);
+      setInterval(takePic, 1500);
       // alert("second stage reached");
     } else if (message.command === "reset") {
       // removeExistingBeasts();
