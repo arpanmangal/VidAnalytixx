@@ -4,7 +4,7 @@ var video = null;
 // function startup(){
 
 
-  video = document.getElementById('myVid');
+video = document.getElementById('myVid');
 
 
 navigator.getMedia = (navigator.getUserMedia ||

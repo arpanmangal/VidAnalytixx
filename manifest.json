@@ -10,8 +10,6 @@
     "48": "logo.png"
   },
 
-
-
   "permissions": [
     "activeTab"
   ],
@@ -20,10 +18,6 @@
     "default_icon": "logo.png",
     "default_title": "VidAnalytixx",
     "default_popup": "popup.html"
-  },
-
-  "background": {
-      "scripts": ["webcam.js"],
-    },
+  }
 
 }

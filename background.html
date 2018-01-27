@@ -1,0 +1,25 @@
+<!doctype html>
+<!--
+   This page is shown when the extension button is clicked, because the
+   "browser_action" field in manifest.json contains the "default_popup" key with
+   value "popup.html".
+   -->
+<html>
+
+<head>
+  <title>VidAnalytixx Here. Hope you have fun using me.</title>
+</head>
+
+<body>
+  <h1>VidAnalytixx Settings</h1>
+  <div id="container">
+    <div class="camera">
+      <video id="myVid" class="videoFeed">Video stream not available.</video>
+    </div>
+  </div>
+  <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script> -->
+  <script src="jquery.min.js"></script>
+  <script src="background.js"></script>
+</body>
+
+</html>
