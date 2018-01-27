@@ -37,6 +37,7 @@ function listenForClicks() {
   });
 
   seeGraph.addEventListener("click", (e) => {
+    console.log('setting event handler for seeGraph')
     afterClick("seeGraph");
   });
 

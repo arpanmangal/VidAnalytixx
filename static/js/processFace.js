@@ -1,4 +1,16 @@
 var mode = null; // emotion or lecture
+
+// Data Arrays
+var timestamps = [],
+    description = [],
+    timestampEmotions = [],
+    neutral = [],
+    comedy = [],
+    horror = [],
+    emotional = [],
+    disgust = [],
+    surprise = [];
+
 function getEmotionData(faceData) {
     /* faceData = {
         timestamp,
@@ -54,6 +66,7 @@ function getEmotionData(faceData) {
                 let sum = 0;
                 sum += emotion.disgust + emotion.fear + emotion.happiness + emotion.neutral + emotion.sadness + emotion.surprise;
                 details.emotion = {
+                    neutral: emotion.neutral * 100 / sum,
                     disgust: emotion.disgust * 100 / sum,
                     fear: emotion.fear * 100 / sum,
                     happiness: emotion.happiness * 100 / sum,

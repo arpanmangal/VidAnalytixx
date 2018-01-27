@@ -41,8 +41,28 @@ function getMeta() {
       processFaces(file, 4/*getTimeStamp()*/, 'des'/*description*/, function (obj) {
         console.log(obj);
 
-        if (data == null || data.length == 0); // do nothing;
+        if (mode == 'emotion') {
+            let Emotions = getEmotionData(obj);
+            timestamps.push(Emotions.timestamp);
+            description.push(Emotions.description);
+            Emotions = Emotions.details.emotion;
+            neutral.push(Emotions.neutral);
+            comedy.push(Emotions.happiness);
+            horror.push(Emotions.sadness);
+            disgust.push(Emotions.disgust);
+            emotional.push(Emotions.sadness);
+            surprise.push(Emotions.surprise);
+
+            let max = 'neutral';
+            for(var key in Emotions) {
+                if (Emotions[key] > Emotions[max]) max = key;
+            }
+
+            timestampEmotions.push(max);
+        }
+        else if (mode == 'lecture') getAttentionData(obj);
         else {
+            alert('no mode among the two');
         }
       });
     });

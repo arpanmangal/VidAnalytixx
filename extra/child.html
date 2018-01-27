@@ -10,11 +10,14 @@
 </head>
 
 <body>
-
+  <script src="../static/visuals/piechart/plottly-latest.min.js"></script>
+  <script src="../static/visuals/piechart/pie.js"></script>
+  <div id="myDiv"></div>
   <script>
   var dataFromParent;
       function init() {
           document.write(dataFromParent);
+          plotPieChart(dataFromParent.timestampEmotions);
       }
   </script>
 </body>
