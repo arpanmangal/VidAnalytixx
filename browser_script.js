@@ -56,6 +56,21 @@
        OpenWindow.init();
   }
 
+  function handleResponse(message) {
+  console.log(`Message from the background script:  ${message.response}`);
+}
+
+function handleError(error) {
+  console.log(`Error: ${error}`);
+}
+
+function notifyBackgroundPage(dat) {
+  var sending = browser.runtime.sendMessage({
+    data: dat
+  });
+  sending.then(handleResponse, handleError);
+}
+
   browser.runtime.onMessage.addListener((message) => {
     if (message.command === "startMovie") {
       // document.innerHTML = '';
