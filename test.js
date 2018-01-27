@@ -54,6 +54,7 @@ function handleMessage(request, sender, sendResponse) {
   document.getElementById('response').innerHTML=request.data;
   // console.log("Message from the content script: " +
   //   request.data);
+  plotPieChart(request.data);
   sendResponse({response: "Response from background script"});
 }
 

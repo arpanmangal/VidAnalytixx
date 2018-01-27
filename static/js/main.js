@@ -50,35 +50,35 @@ function getMeta() {
       
       console.log('calling processFace')
       processFaces(file, 4/*getTimeStamp()*/, 'des'/*description*/, function (obj) {
-        console.log(obj);
+        // console.log(obj);
 
         if (mode == 'emotion') {
             console.log('emotion mode')
             let Emotions = getEmotionData(obj);
-            console.log('its ok ->')
-            console.log(Emotions)
-            timestamps.push(Emotions.timestamp);
-            description.push(Emotions.description);
-            console.log('first')
+            // console.log('its ok ->')
+            // console.log(Emotions)
+            // timestamps.push(Emotions.timestamp);
+            // description.push(Emotions.description);
+            // console.log('first')
             Emotions1 = Emotions.details.emotion;
-            console.log('good')
-            neutral.push(Emotions1.neutral);
-            comedy.push(Emotions1.happiness);
-            horror.push(Emotions1.sadness);
-            disgust.push(Emotions1.disgust);
-            console.log('fine')
-            emotional.push(Emotions1.sadness);
-            surprise.push(Emotions1.surprise);
+            // console.log('good')
+            // neutral.push(Emotions1.neutral);
+            // comedy.push(Emotions1.happiness);
+            // horror.push(Emotions1.sadness);
+            // disgust.push(Emotions1.disgust);
+            // console.log('fine')
+            // emotional.push(Emotions1.sadness);
+            // surprise.push(Emotions1.surprise);
 
-            let max = 'neutral';
-            console.log('well')
+            // let max = 'neutral';
+            // console.log('well')
             for(var key in Emotions1) {
                 if (Emotions1[key] > Emotions1[max]) max = key;
             }
 
-            console.log('hi')
+            // console.log('hi')
             timestampEmotions.push(max);
-            console.log(timestampEmotions);
+            // console.log(timestampEmotions);
         }
         else if (mode == 'lecture') getAttentionData(obj);
         else {

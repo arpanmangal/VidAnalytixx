@@ -116,7 +116,7 @@ function notifyBackgroundPage(dat) {
          }
         console.log(dataPie);
         // openNewWindow({'a':3});
-        notifyBackgroundPage({'a':3})
+        notifyBackgroundPage(dataPie)
         dataNoteGraph = true;
       }
     }

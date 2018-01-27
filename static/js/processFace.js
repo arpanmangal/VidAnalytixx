@@ -36,14 +36,14 @@ function getEmotionData(faceData) {
         }
     */
     console.log('in getEmotionData');
-    console.log(faceData);
+    // console.log(faceData);
     var faceEmotions = {
         timestamp: faceData.timestamp,
         description: faceData.description,
         details: null
     };
     var apiRes = faceData.data;
-    console.log(apiRes);
+    // console.log(apiRes);
     if (apiRes == null || apiRes == undefined || apiRes.length == 0) {
         faceEmotions.details = null;
         console.log('apiRes is null')
@@ -53,12 +53,12 @@ function getEmotionData(faceData) {
         // this assumes single user
         // processes first face in case of more than one usr
         let faceAtt = apiRes[0].faceAttributes;
-        console.log(faceAtt);
+        // console.log(faceAtt);
         // Error handling
         if (faceAtt == null || faceAtt == undefined) {
             // no data
             faceEmotions.details = null;
-            console.log('faceAtt is null')
+            // console.log('faceAtt is null')
             return faceEmotions;
 
         } else {
@@ -67,9 +67,9 @@ function getEmotionData(faceData) {
             details.age = (faceAtt.age == null || faceAtt.age == undefined) ? null : faceAtt.age;
 
             let emotion = faceAtt.emotion;
-            console.log(emotion);
+            // console.log(emotion);
             details.emotion = null;
-            console.log('going ok ');
+            // console.log('going ok ');
             if (emotion != null && emotion != undefined) {
                 let sum = 0;
                 sum += (emotion.disgust + emotion.fear + emotion.happiness + emotion.neutral + emotion.sadness + emotion.surprise);
@@ -81,7 +81,7 @@ function getEmotionData(faceData) {
                     sadness: emotion.sadness * 100 / sum,
                     surprise: emotion.surprise * 100 / sum
                 }
-                console.log(details.emotion);
+                // console.log(details.emotion);
             }
 
             faceEmotions.details = details;

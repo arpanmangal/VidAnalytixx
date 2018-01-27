@@ -7,6 +7,7 @@ function plotPieChart(timestampEmotion) {
         disgust = 0,
         surprise = 0;
 
+    console.log('in plotPieChart')
     for (let i = 0; i < timestampEmotion.length; i++) {
         switch(timestampEmotion[i]) {
             case 'neutral':
@@ -36,6 +37,6 @@ function plotPieChart(timestampEmotion) {
       width: 500
     };
     
-    Plotly.newPlot('myDiv', data, layout);
+    Plotly.newPlot('response', data, layout);
 
 }
