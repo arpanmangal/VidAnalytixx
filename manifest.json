@@ -11,7 +11,10 @@
   },
 
   "permissions": [
-    "activeTab"
+    "*://southeastasia.api.cognitive.microsoft.com/*",
+    "*://*.google.co.in/*",
+    "activeTab",
+    "webRequest"
   ],
 
   "browser_action": {

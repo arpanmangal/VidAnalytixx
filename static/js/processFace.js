@@ -4,7 +4,7 @@ function getEmotionData(faceData) {
         timestamp,
         description,
         faceApiResponse
-    } 
+    }
     returns:
         obj = {
             timestamp,
@@ -73,7 +73,7 @@ function getAttentionData(faceData) {
         timestamp,
         description,
         faceApiResponse
-    } 
+    }
     returns:
         obj = {
             timestamp,
@@ -188,7 +188,8 @@ function processFaces(dataURL, timestamp, description, callback) {
         },
 
         // Request body.
-        data: '{"url: https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg"}'
+                    data: '{"url": ' + '"' + 'https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' + '"}'
+        // data: '{"url: https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg"}'
         // data: makeblob(dataURL)
 
     })
