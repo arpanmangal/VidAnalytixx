@@ -68,6 +68,7 @@ function notifyBackgroundPage(dat) {
   var sending = browser.runtime.sendMessage({
     data: dat
   });
+  browser.browserAction.openPopup()
   sending.then(handleResponse, handleError);
 }
 
