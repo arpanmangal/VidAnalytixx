@@ -6,7 +6,6 @@ function listenForClicks() {
     function sendToPage(tabs) {
       browser.tabs.sendMessage(tabs[0].id, {
         command: command,
-        beastURL: "none"
       });
     }
 
@@ -27,7 +26,7 @@ function listenForClicks() {
   let startLecture = document.getElementById('startLecture');
   let seeGraph = document.getElementById('seeGraph');
   let stopButton = document.getElementById('stopButton');
-  
+
   // Event Listeners
   startMovie.addEventListener("click", (e) => {
     afterClick("startMovie");
