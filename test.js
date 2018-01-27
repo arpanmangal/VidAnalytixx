@@ -2,13 +2,10 @@
 
 function listenForClicks() {
 
-
-
-  document.addEventListener("click", (e) => {
-
+  function afterClick(command) {
     function sendToPage(tabs) {
       browser.tabs.sendMessage(tabs[0].id, {
-        command: "alert",
+        command: command,
         beastURL: "none"
       });
     }
@@ -23,6 +20,29 @@ function listenForClicks() {
       })
       .then(sendToPage)
       .catch(reportError);
+  }
+
+
+  let startMovie = document.getElementById('startMovie');
+  let startLecture = document.getElementById('startLecture');
+  let seeGraph = document.getElementById('seeGraph');
+  let stopButton = document.getElementById('stopButton');
+  
+  // Event Listeners
+  startMovie.addEventListener("click", (e) => {
+    afterClick("startMovie");
+  });
+
+  startLecture.addEventListener("click", (e) => {
+    afterClick("startLecture");
+  });
+
+  seeGraph.addEventListener("click", (e) => {
+    afterClick("seeGraph");
+  });
+
+  stopButton.addEventListener("click", (e) => {
+    afterClick("stopButton");
   });
 }
 
