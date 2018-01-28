@@ -31,7 +31,7 @@
   }
 
   function takePic() {
-    // document.getElementById("videoElement").style.display = "none";
+    document.getElementById("canvas").style.display = "none";
 
     var context = canvas.getContext('2d');
     if (width && height) {

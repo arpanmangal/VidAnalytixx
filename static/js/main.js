@@ -55,7 +55,7 @@ function getMeta() {
       // console.log(description);
       
       // console.log('calling processFace')
-      processFaces(file, 4/*getTimeStamp()*/, 'des'/*description*/, function (obj) {
+      processFaces(file, description, 'des'/*description*/, function (obj) {
         // console.log(obj);
 
         if (mode == 'emotion') {
@@ -76,15 +76,15 @@ function getMeta() {
             // emotional.push(Emotions1.sadness);
             // surprise.push(Emotions1.surprise);
 
-            var max = 'neutral';
-            // // console.log('well')
-            for(var key in Emotions1) {
-                if (Emotions1[key] > Emotions1[max]) max = key;
-            }
+            // var max = 'neutral';
+            // // // console.log('well')
+            // for(var key in Emotions1) {
+            //     if (Emotions1[key] > Emotions1[max]) max = key;
+            // }
 
             // // console.log('hi')
             // console.log(max);
-            timestampEmotions.push(max);
+            timestampEmotions.push(Emotions1);
             console.log(timestampEmotions);
             caller(timestampEmotions);
             return timestampEmotions;

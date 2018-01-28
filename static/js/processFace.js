@@ -112,7 +112,7 @@ function getAttentionData(faceData) {
         eyeCoordinate: null
     }
     var apiRes = faceData.data;
-    if (apiRes == null || apiRes == undefined || data.length == 0) {
+    if (apiRes == null || apiRes == undefined || apiRes.length == 0) {
         faceAttention.eyeCoordinate = null;
         return faceAttention;
     } else {

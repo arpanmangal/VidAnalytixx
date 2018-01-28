@@ -65,35 +65,43 @@ function handleMessage(request, sender, sendResponse) {
 
   // // console.log('in plotPieChart')
   for (let i = 0; i < request.data.length; i++) {
-    switch (request.data[i]) {
-      case 'neutral':
-        neutral++; break;
-      case 'happiness':
-        comedy++; break;
-      case 'sadness':
-        emotional++; break;
-      case 'disgust':
-        disgust++; break;
-      case 'fear':
-        horror++; break;
-      case 'surprise':
-        surprise++; break;
-    }
+    // switch (request.data[i]) {
+    //   case 'neutral':
+    //     neutral++; break;
+    //   case 'happiness':
+    //     comedy++; break;
+    //   case 'sadness':
+    //     emotional++; break;
+    //   case 'disgust':
+    //     disgust++; break;
+    //   case 'fear':
+    //     horror++; break;
+    //   case 'surprise':
+    //     surprise++; break;
+      neutral += request.data[i].neutral;
+      comedy += request.data[i].happiness;
+      emotional += request.data[i].sadness;
+      disgust += request.data[i].disgust;
+      horror += request.data[i].fear;
+      surprise += request.data[i].surprise;
+    // }
   }
   var total = neutral + comedy + emotional + disgust + horror + surprise;
-  neutral = neutral * 100 / total;
-  comedy = comedy * 100 / total;
-  emotional = emotional * 100 / total;
-  disgust = disgust * 100 / total;
-  horror = horror * 100 / total;
-  surprise = surprise * 100 / total;
+  neutral = parseFloat(neutral * 100 / total).toFixed(2);
+  comedy =parseFloat( comedy * 100 / total).toFixed(2);
+  emotional = parseFloat(emotional * 100 / total).toFixed(2);
+  disgust = parseFloat(disgust * 100 / total).toFixed(2);
+  horror = parseFloat(horror * 100 / total).toFixed(2);
+  surprise = parseFloat(surprise * 100 / total).toFixed(2);
+
+  // parseFloat(Math.round(neutral * 100) / 100).toFixed(2);
 
   document.getElementById('response').innerHTML+=('<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral
                                                   +'%<br><img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' + comedy
                                                   +'%<br><img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' + emotional
                                                   +'%<br><img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' + horror
                                                   +'%<br><img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' + disgust
-                                                  +'%<br><img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise);
+                                                  +'%<br><img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise+"%");
 
   sendResponse({ response: "Response from background script" });
 }
@@ -107,6 +115,8 @@ browser.tabs.executeScript({
 })
   .then(listenForClicks)
   .catch(reportExecuteScriptError);
+  
+
 
 browser.tabs.executeScript({
   file: "static/js/processFace.js"
