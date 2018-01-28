@@ -52,7 +52,7 @@ function reportExecuteScriptError(error) {
 
 function handleMessage(request, sender, sendResponse) {
   console.log(request);
-  // document.getElementById('response').innerHTML = request.data;
+  document.getElementById('response').innerHTML = '';
   // // console.log("Message from the content script: " +
   //   request.data);
   // plotPieChart(request.data);
@@ -80,7 +80,20 @@ function handleMessage(request, sender, sendResponse) {
         surprise++; break;
     }
   }
-  document.getElementById('response').innerHTML+=("Neutral: " + neutral);
+  var total = neutral + comedy + emotional + disgust + horror + surprise;
+  neutral = neutral * 100 / total;
+  comedy = comedy * 100 / total;
+  emotional = emotional * 100 / total;
+  disgust = disgust * 100 / total;
+  horror = horror * 100 / total;
+  surprise = surprise * 100 / total;
+
+  document.getElementById('response').innerHTML+=("Neutral: " + neutral
+                                                  +"%\nComedy: " + comedy
+                                                  +"%\nEmotional: " + emotional
+                                                  +"%\nHorror: " + horror
+                                                  +"%\nDisgust: " + disgust
+                                                  +"%\nSurprise: " + surprise + "%");
   sendResponse({ response: "Response from background script" });
 }
 
