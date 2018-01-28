@@ -94,14 +94,34 @@ function handleMessage(request, sender, sendResponse) {
   horror = parseFloat(horror * 100 / total).toFixed(2);
   surprise = parseFloat(surprise * 100 / total).toFixed(2);
 
-  // parseFloat(Math.round(neutral * 100) / 100).toFixed(2);
 
-  document.getElementById('response').innerHTML+=('<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral
-                                                  +'%<br><img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' + comedy
-                                                  +'%<br><img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' + emotional
-                                                  +'%<br><img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' + horror
-                                                  +'%<br><img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' + disgust
-                                                  +'%<br><img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise+"%");
+  function custom_compare (a,b) {
+  // I'm assuming all values are numbers
+  return a.value - b.value;
+  }
+  // parseFloat(Math.round(neutral * 100) / 100).toFixed(2);
+  sample_data=[ {name:'<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral, value: neutral},
+                                                  {name:'<img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' + comedy, value:comedy},
+                                                  {name: '<img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' + emotional, value:emotional},
+                                                  {name: '<img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' + horror, value:horror},
+                                                  {name: '<img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' + disgust, value:disgust},
+                                                  {name: '<img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise,value:surprise}
+  ];
+
+  sample_data.sort(custom_compare).reverse();
+  var htmlContent='';
+  for (var i=0;i<sample_data.length;i++) {
+    //console.log(sample_data[i].name);
+    htmlContent+= (sample_data[i].name+"%<br>");
+
+  }
+  // document.getElementById('response').innerHTML+=('<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral
+  //                                                 +'%<br><img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' + comedy
+  //                                                 +'%<br><img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' + emotional
+  //                                                 +'%<br><img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' + horror
+  //                                                 +'%<br><img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' + disgust
+  //                                                 +'%<br><img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise+"%");
+  document.getElementById('response').innerHTML+= htmlContent;
 
   sendResponse({ response: "Response from background script" });
 }
