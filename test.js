@@ -112,7 +112,7 @@ function handleMessage(request, sender, sendResponse) {
   var htmlContent='';
   for (var i=0;i<sample_data.length;i++) {
     //console.log(sample_data[i].name);
-    if (sample_data[i].value>2) htmlContent+= (sample_data[i].name+ '<progress  max="100" value=' +sample_data[i].value + "></progress>"+ "<br>");
+    if (sample_data[i].value>1) htmlContent+= (sample_data[i].name+ '<progress  max="100" value=' +sample_data[i].value + "></progress>"+ "<br>");
 
   }
   // document.getElementById('response').innerHTML+=('<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral
