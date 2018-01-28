@@ -88,12 +88,13 @@ function handleMessage(request, sender, sendResponse) {
   horror = horror * 100 / total;
   surprise = surprise * 100 / total;
 
-  document.getElementById('response').innerHTML+=("Neutral: " + neutral
-                                                  +"%\nComedy: " + comedy
-                                                  +"%\nEmotional: " + emotional
-                                                  +"%\nHorror: " + horror
-                                                  +"%\nDisgust: " + disgust
-                                                  +"%\nSurprise: " + surprise + "%");
+  document.getElementById('response').innerHTML+=('<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' + neutral
+                                                  +'%<br><img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' + comedy
+                                                  +'%<br><img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' + emotional
+                                                  +'%<br><img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' + horror
+                                                  +'%<br><img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' + disgust
+                                                  +'%<br><img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' + surprise);
+
   sendResponse({ response: "Response from background script" });
 }
 
