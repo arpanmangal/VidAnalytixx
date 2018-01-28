@@ -1,4 +1,7 @@
 (function () {
+
+  var timestampEmotions=[];
+
   if (window.hasRun) {
     return;
   }
@@ -43,7 +46,11 @@
       // para.innerHTML= (clickMarker.getTime() - startTime) / 1000 ;
       // para.append(" seconds");
 
-      passFace(data);
+      passFace(data
+      , function(tE) {
+        timestampEmotions = tE;
+      });
+
     } else {
       // clearPhoto();
     }
@@ -62,10 +69,11 @@
 }
 
 function handleError(error) {
-  console.log(`Error: ${error}`);
+  // console.log(`Error: ${error}`);
 }
 
 function notifyBackgroundPage(dat) {
+  console.log(dat);
   var sending = browser.runtime.sendMessage({
     data: dat
   });
@@ -110,13 +118,14 @@ function notifyBackgroundPage(dat) {
     } else if (message.command === "seeGraph") {
       // pass the data to openNewWindow
       if (dataNoteGraph == false) {
-        console.log('seeGraph clicked');
-         let dataPie = {
-           timestampEmotions: timestampEmotions
-         }
-        console.log(dataPie);
+        // console.log('seeGraph clicked');
+        //  let dataPie = {
+        //    timestampEmotions: timestampEmotions
+        //  }
+        // console.log(dataPie);
         // openNewWindow({'a':3});
-        notifyBackgroundPage(dataPie)
+        console.log(timestampEmotions);
+        notifyBackgroundPage(timestampEmotions);
         dataNoteGraph = true;
       }
     }

@@ -3,13 +3,14 @@ var mode = null; // emotion or lecture
 // Data Arrays
 var timestamps = [],
     description = [],
-    timestampEmotions = [],
     neutral = [],
     comedy = [],
     horror = [],
     emotional = [],
     disgust = [],
     surprise = [];
+
+ 
 
 function getEmotionData(faceData) {
     /* faceData = {
@@ -35,30 +36,30 @@ function getEmotionData(faceData) {
             }
         }
     */
-    console.log('in getEmotionData');
-    // console.log(faceData);
+    // // console.log('in getEmotionData');
+    // // console.log(faceData);
     var faceEmotions = {
         timestamp: faceData.timestamp,
         description: faceData.description,
         details: null
     };
     var apiRes = faceData.data;
-    // console.log(apiRes);
+    // // console.log(apiRes);
     if (apiRes == null || apiRes == undefined || apiRes.length == 0) {
         faceEmotions.details = null;
-        console.log('apiRes is null')
+        // // console.log('apiRes is null')
         return faceEmotions;
         
     } else {
         // this assumes single user
         // processes first face in case of more than one usr
         let faceAtt = apiRes[0].faceAttributes;
-        // console.log(faceAtt);
+        // // console.log(faceAtt);
         // Error handling
         if (faceAtt == null || faceAtt == undefined) {
             // no data
             faceEmotions.details = null;
-            // console.log('faceAtt is null')
+            // // console.log('faceAtt is null')
             return faceEmotions;
 
         } else {
@@ -67,9 +68,9 @@ function getEmotionData(faceData) {
             details.age = (faceAtt.age == null || faceAtt.age == undefined) ? null : faceAtt.age;
 
             let emotion = faceAtt.emotion;
-            // console.log(emotion);
+            // // console.log(emotion);
             details.emotion = null;
-            // console.log('going ok ');
+            // // console.log('going ok ');
             if (emotion != null && emotion != undefined) {
                 let sum = 0;
                 sum += (emotion.disgust + emotion.fear + emotion.happiness + emotion.neutral + emotion.sadness + emotion.surprise);
@@ -81,11 +82,11 @@ function getEmotionData(faceData) {
                     sadness: emotion.sadness * 100 / sum,
                     surprise: emotion.surprise * 100 / sum
                 }
-                // console.log(details.emotion);
+                // // console.log(details.emotion);
             }
 
             faceEmotions.details = details;
-            
+            // console.log(faceEmotions);
             return faceEmotions;
         }
     }
@@ -174,7 +175,7 @@ function processFaces(dataURL, timestamp, description, callback) {
     // **********************************************
     // *** Update or verify the following values. ***
     // **********************************************
-    console.log("Sending image to face api");
+    // // console.log("Sending image to face api");
     // Replace the subscriptionKey string value with your valid subscription key.
     var subscriptionKey = "ec21e11600704233a7cdb295a37249b6";
 
@@ -195,13 +196,13 @@ function processFaces(dataURL, timestamp, description, callback) {
 
 
     // Perform the REST API call.
-    // console.log('before ' + dataURL + makeblob(dataURL))
+    // // console.log('before ' + dataURL + makeblob(dataURL))
     $.ajax({
         url: uriBase + "?" + $.param(params),
 
         type: 'POST',
         processData: false,
-        contentType: 'application/json',
+        contentType: 'application/octet-stream',
 
 
         // Request headers.
@@ -211,9 +212,9 @@ function processFaces(dataURL, timestamp, description, callback) {
         },
 
         // Request body.
-                    data: '{"url": ' + '"' + 'https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' + '"}'
+                    // data: '{"url": ' + '"' + 'https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg' + '"}'
         // data: '{"url: https://pbs.twimg.com/profile_images/874276197357596672/kUuht00m_400x400.jpg"}'
-        // data: makeblob(dataURL)
+        data: makeblob(dataURL)
 
     })
 
@@ -224,7 +225,7 @@ function processFaces(dataURL, timestamp, description, callback) {
                 description: description,
                 data: data
             }
-            // console.log(obj)
+            // // console.log(obj)
             callback(obj);
         })
 
@@ -234,7 +235,7 @@ function processFaces(dataURL, timestamp, description, callback) {
                 description: description,
                 data: null // change this to actual error message if you want err to be sent
             }
-            console.log(errorThrown)
+            // // console.log(errorThrown)
             callback(obj);
         });
 }
