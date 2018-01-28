@@ -100,12 +100,12 @@ function handleMessage(request, sender, sendResponse) {
   return a.value - b.value;
   }
   // parseFloat(Math.round(neutral * 100) / 100).toFixed(2);
-  sample_data=[ {name:'<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:</img>' , value: neutral},
-                                                  {name:'<img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:</img>' , value:comedy},
-                                                  {name: '<img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional:</img>' , value:emotional},
-                                                  {name: '<img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:</img>' , value:horror},
-                                                  {name: '<img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:</img>' , value:disgust},
-                                                  {name: '<img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:</img>' ,value:surprise}
+  sample_data=[ {name:'<img src="static/emojis/neutral.png" alt="Neutral" height="42" width="42">Neutral:   </img>' , value: neutral},
+                                                  {name:'<img src="static/emojis/happy.png" alt="Comedy" height="42" width="42">Comedy:    </img>' , value:comedy},
+                                                  {name: '<img src="static/emojis/emotional.png" alt="Emotional" height="42" width="42">Emotional: </img>' , value:emotional},
+                                                  {name: '<img src="static/emojis/fear.png" alt="Horror" height="42" width="42">Horror:    </img>' , value:horror},
+                                                  {name: '<img src="static/emojis/disgust.png" alt="Disgust" height="42" width="42">Disgust:   </img>' , value:disgust},
+                                                  {name: '<img src="static/emojis/surprised.png" alt="Surprise" height="42" width="42">Surprise:  </img>' ,value:surprise}
   ];
 
   sample_data.sort(custom_compare).reverse();
